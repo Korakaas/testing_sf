@@ -9,7 +9,7 @@ on:
   push:
   pull_request_target:
     types: [ opened ]
-    branches: [ master ]
+    branches: [ master, dev]
 
 permissions:
   contents: read
