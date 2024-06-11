@@ -1,7 +1,6 @@
-image: jakzal/phpqa:php8.1
-
+image: jakzal/phpqa:php8.2
 before_script:
-    - composer update
+    - composer install
 
 cache:
     paths: [vendor/]
