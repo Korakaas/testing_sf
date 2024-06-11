@@ -13,7 +13,9 @@ class DefaultController extends AbstractController
     public function index(Greetings $greetingsService, string $name): Response
     {
         return $this->render('default/index.html.twig', [
-            'message' => $greetingsService->greet($name),
-        ]);
+                    'message' => $greetingsService->greet($name),]);
     }
+
+
+
 }
