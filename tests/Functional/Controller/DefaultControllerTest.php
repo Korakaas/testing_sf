@@ -14,6 +14,6 @@ class DefaultControllerTest extends WebTestCase
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertResponseIsSuccessful();
 
-        $this->assertSelectorTextContains('h1', 'Hello, Bob!');
+        $this->assertSelectorTextContains('h1', 'Helloiiii, Bob!');
     }
 }
