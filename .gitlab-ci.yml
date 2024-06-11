@@ -5,7 +5,7 @@ before_script:
 
 cache:
     paths:
-	- vendor/
+	    - vendor/
 
 stages:
     - SecurityChecker
