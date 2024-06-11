@@ -8,7 +8,8 @@ name: Symfony
 on:
   push:
   pull_request_target:
-    branches: [ "dev" ]
+    types: [ opened ]
+    branches: [ main ]
 
 permissions:
   contents: read
