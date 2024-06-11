@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   symfony-tests:
-    if: github.base_ref == 'dev'
+    if: github.base_ref == 'main'
     runs-on: ubuntu-latest
     steps:
     #  To automatically get bug fixes and new Php versions for shivammathur/setup-php,
