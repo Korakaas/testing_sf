@@ -11,11 +11,7 @@ class DefaultController extends AbstractController
 {
     #[Route('/hello/{name}', name: 'app_hello')]
     public function index(Greetings $greetingsService, string $name): Response
-    {
-        return $this->render('default/index.html.twig', [
-                    'message' => $greetingsService->greet($name),]);
+    { return $this->render('default/index.html.twig', [
+                        'message' => $greetingsService->greet($name),]);
     }
-
-
-
 }
