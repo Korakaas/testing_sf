@@ -7,15 +7,16 @@ name: Symfony
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+  pull_request_target:
+    types: [ opened ]
+    branches: [ main ]
 
 permissions:
   contents: read
 
 jobs:
   symfony-tests:
+    if: github.base_ref == 'main'
     runs-on: ubuntu-latest
     steps:
     #  To automatically get bug fixes and new Php versions for shivammathur/setup-php,
