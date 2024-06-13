@@ -22,7 +22,7 @@ class RabbitRepositoryTest extends KernelTestCase
     public function testAdd()
     {
         $rabbit = new Rabbit();
-        $rabbit->setName('Test');
+        $rabbit->setName('Test1');
         $this->em->persist($rabbit);
         $this->em->flush();
 
