@@ -4,30 +4,37 @@ namespace Integration\Repository;
 
 use App\Entity\Rabbit;
 use App\Repository\RabbitRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Exception\ORMException;
+use Doctrine\ORM\OptimisticLockException;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class RabbitRepositoryTest extends KernelTestCase
 {
-    private RabbitRepository $rabbitRepo;
-    private EntityManagerInterface $em;
+    private EntityManager $entityManager;
+    private RabbitRepository $rabbitRepository;
 
     protected function setUp(): void
     {
         self::bootKernel();
-        $this->em = self::$kernel->getContainer()->get('doctrine')->getManager();
-        $this->rabbitRepo = $this->createMock(RabbitRepository::class);
+        $this->entityManager = self::$kernel->getContainer()->get('doctrine')->getManager();
+        $this->rabbitRepository = $this->entityManager->getRepository(Rabbit::class);
     }
 
+    /**
+     * @throws OptimisticLockException
+     * @throws ORMException
+     */
     public function testAdd()
     {
         $rabbit = new Rabbit();
-        $rabbit->setName('Test1');
-        $this->em->persist($rabbit);
-        $this->em->flush();
+        $rabbit->setName('Test');
 
-        $rabbits = $this->rabbitRepo->findAll();
+        $this->entityManager->persist($rabbit);
+        $this->entityManager->flush();
 
-        $this->assertGreaterThan(0, $rabbits);
+        $rabbits = $this->rabbitRepository->findAll();
+
+        $this->assertGreaterThan(0, sizeof($rabbits));
     }
 }
