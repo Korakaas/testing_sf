@@ -1,7 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello!{% endblock %}
+{% block title %}Accueil!
+{% endblock %}
 
 {% block body %}
-    <h1>{{ message }}</h1>
+<h1>Bienvenue cher Lapinou</h1>
+
+<ul>
+	{% for rabbit in rabbits %}
+    <li>{{rabbit.name}}</li>
+    {% endfor %}
+</ul>
 {% endblock %}
